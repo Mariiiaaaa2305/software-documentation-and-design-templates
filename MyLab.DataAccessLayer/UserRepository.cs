@@ -11,7 +11,7 @@ public class UserRepository : IUserRepository
         if (!File.Exists(filePath)) return users;
 
         var lines = File.ReadAllLines(filePath);
-        foreach (var line in lines.Skip(1)) // Пропускаємо заголовок
+        foreach (var line in lines.Skip(1))
         {
             var parts = line.Split(',');
             if (parts.Length == 3)
@@ -29,10 +29,9 @@ public class UserRepository : IUserRepository
     public void SaveUsersToDatabase(List<User> users)
     {
         using var db = new AppDbContext();
-        // Створюємо таблиці, якщо їх немає
         db.Database.EnsureCreated();
         
-        // Очищуємо стару базу, щоб не дублювати (для лаби так простіше)
+
         db.Users.ExecuteDelete(); 
         
         db.Users.AddRange(users);
