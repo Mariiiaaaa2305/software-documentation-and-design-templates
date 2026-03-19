@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Редагувати | Airbnb Admin</title>
+    <style>
+        body { background-color: #f8f9fc; font-family: 'Segoe UI', sans-serif; margin: 0; }
+        .nav-panel { background: white; padding: 15px 30px; display: flex; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+        .form-card { background: white; padding: 40px; border-radius: 20px; box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 120, 0.1); width: 100%; max-width: 800px; margin: 40px auto; }
+        h2 { color: #4e73df; font-weight: 800; text-align: center; margin-bottom: 30px; font-size: 2rem; }
+        label { display: block; font-weight: 700; color: #4e73df; margin-bottom: 8px; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #e3e6f0; border-radius: 10px; margin-bottom: 20px; box-sizing: border-box; font-size: 16px; }
+        .btn-submit { width: 100%; background: #5c7cea; color: white; border: none; padding: 15px; border-radius: 40px; font-weight: bold; font-size: 18px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="nav-panel">
+        <div>
+            <a href="/" style="text-decoration: none; color: #4e73df; font-weight: 800; font-size: 1.2rem; text-transform: uppercase;">AIRBNB ADMIN</a>
+            <div style="font-size: 10px; color: #858796; margin-top: -4px;">Mariia's Lab Project</div>
+        </div>
+    </div>
+    <div class="form-card">
+        <h2>Редагувати житло</h2>
+        <form action="/edit/{{ item.id }}" method="POST">
+            <label>Назва помешкання</label>
+            <input type="text" name="title" value="{{ item.title }}" required>
+
+            <label>Адреса</label>
+            <input type="text" name="address" value="{{ item.address }}" required>
+
+            <label>Ціна за ніч (грн)</label>
+            <input type="number" name="price" value="{{ item.price }}" required>
+
+            <label>Опис</label>
+            <textarea name="description" rows="5">{{ item.description }}</textarea>
+
+            <button type="submit" class="btn-submit">Зберегти зміни</button>
+            <div style="text-align: center; margin-top: 15px;"><a href="/" style="color: #858796; text-decoration: none;">Скасувати</a></div>
+        </form>
+    </div>
+</body>
+</html>
